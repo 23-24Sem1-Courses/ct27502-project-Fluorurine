@@ -1,15 +1,15 @@
 {
-    "name": "dlct/ct275-project",
-    "autoload": {
-        "psr-4": {
-            "Dlct\\Ct275Project\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Fluorurine",
-            "email": "votruong830430073@gmail.com"
-        }
-    ],
-    "require": {}
+	"name": "dlct/ct275-project",
+	"autoload": {
+		"psr-4": {
+			"Ct275\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Fluorurine",
+			"email": "votruong830430073@gmail.com"
+		}
+	],
+	"require": {}
 }
