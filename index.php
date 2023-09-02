@@ -7,6 +7,8 @@
   <!-- Load Jquerry and Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+  <!-- Load thành phần của Flowbite để tạo chức năng không cần JS -->
+  <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
   <title>Web bán quần áo</title>
 </head>
 
