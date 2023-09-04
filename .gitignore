@@ -2,3 +2,4 @@ vendor
 composer.phar
 todo.txt
 public
+.editorconfig
