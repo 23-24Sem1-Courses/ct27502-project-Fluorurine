@@ -105,7 +105,7 @@
 </div>
 <!--  -->
 <!-- Phần ngăn cách -->
-<hr class="w-3/4 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10">
+<hr class="w-3/4 h-1 mx-auto mt-4 bg-gray-100 border-0 rounded ">
 
 <!-- Mo dau phan san pham moi -->
 <div class=" bg-white  ">

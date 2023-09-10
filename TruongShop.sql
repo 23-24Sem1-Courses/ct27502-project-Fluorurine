@@ -1,0 +1,9 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+		username VARCHAR(50) NOT NULL UNIQUE,
+    firstname VARCHAR(50),
+		lastname VARCHAR(50),
+    email VARCHAR(100),
+    age INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
