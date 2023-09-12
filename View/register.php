@@ -1,3 +1,10 @@
+<?php
+// Check if username and password are already in session
+if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+	// Redirect to a different page
+	header("Location: /");
+	exit;
+} ?>
 <div class="h-screen bg-gray-200 py-20 p-4 lg:p-32">
 	<div class="max-w-md bg-white rounded-lg overflow-hidden shadow-lg mx-auto">
 		<div class="p-6 ">
@@ -68,13 +75,6 @@
 <script>
 	//To use later if have the chance to do it
 	$(document).ready(function() {
-		if (localStorage.getItem('registerremember')) {
-			let rememberData = JSON.parse(localStorage.getItem('registerremember'));
-			$('#username').val(rememberData.username);
-			$('#firstName').val(rememberData.firstName);
-			$('#lastName').val(rememberData.lastName);
-			$('#email').val(rememberData.email);
-		}
 		// Submit form on button click
 		$('#registerForm').on('submit', function(event) {
 			// Prevent form from submitting
@@ -84,7 +84,6 @@
 			let email = $('#email').val();
 			let firstName = $('#firstName').val();
 			let lastName = $('#lastName').val();
-
 			let remember = {
 
 				username: username,
@@ -93,9 +92,15 @@
 				lastName: lastName,
 				email: email
 			};
-			console.log(remember);
 			localStorage.setItem('registerremember', JSON.stringify(remember));
 			$('#registerForm').unbind('submit').submit();
 		})
 	})
+	if (localStorage.getItem('registerremember')) {
+		let rememberData = JSON.parse(localStorage.getItem('registerremember'));
+		$('#username').val(rememberData.username);
+		$('#firstName').val(rememberData.firstName);
+		$('#lastName').val(rememberData.lastName);
+		$('#email').val(rememberData.email);
+	}
 </script>

@@ -6,20 +6,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 	exit;
 }
 
-// Check if username and password are provided in the POST data
-if (isset($_POST['username']) && isset($_POST['password'])) {
-	// Retrieve the username and password from POST data
-	$username = $_POST['username'];
-	$password = $_POST['password'];
 
-	// Set the username and password in session variables
-	$_SESSION['username'] = $username;
-	$_SESSION['password'] = $password;
 
-	// Redirect to a different page
-	header("Location: /");
-	exit;
-}
 
 // If no username and password are in session or POST data, do nothing
 ?>
@@ -28,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 		<div class="p-6">
 			<h2 class="text-2xl font-bold text-gray-800 mb-2">Chào mừng bạn đã trở lại</h2>
 			<p class="text-gray-700 mb-6">Hãy đăng nhập vào tài khoản của bạn</p>
-			<form id="loginForm" action="login.php " method="POST">
+			<form id="loginForm" action="Controller/loginController.php" enctype="multipart/form-data " method="POST">
 				<div class=" mb-4">
 					<label class="block text-gray-700 font-bold mb-2" for="username">
 						Tên đăng nhập

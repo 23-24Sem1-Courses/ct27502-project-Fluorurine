@@ -2,10 +2,7 @@
 	"name": "dlct/ct275-project",
 	"autoload": {
 		"psr-4": {
-			"Ct275\\": "src/",
-			"Ct275\\Model\\": "Model/",
-			"Ct275\\View\\": "View/",
-			"Ct275\\Controller\\": "Controller/"
+			"Model\\": "Model/"
 		}
 	},
 	"authors": [

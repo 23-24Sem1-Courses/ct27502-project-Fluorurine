@@ -16,7 +16,9 @@
 
 
 	<?php
-	require 'vendor/autoload.php';
+	include 'vendor/autoload.php';
+
+
 	session_start();
 
 	$request = $_SERVER['REQUEST_URI'];
@@ -24,7 +26,6 @@
 	$filename = basename($path, ".php");
 	$viewDir = __DIR__ . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR;
 
-	// echo $filename . "\r\n";
 	// Render phần header tuỳ vào điều kiện đăng nhập
 	if (1 == 1) {
 		require  $viewDir . 'header.php';
