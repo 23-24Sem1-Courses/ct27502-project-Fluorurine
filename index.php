@@ -50,15 +50,27 @@
 		case 'account':
 			require  $viewDir . 'account.php';
 			break;
-
+		case 'test':
+			require  $viewDir . 'test.php';
+			break;
+		case 'productinfo':
+			require  $viewDir . 'productinfo.php';
+			break;
+		case 'adminproduct':
+			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminProduct.php';
+			break;
+		case 'admincreate':
+			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminCreateProduct.php';
+			break;
 			//Error View
 		default:
 			require $viewDir . '404.php';
 			break;
 	}
-	if (1 == 1) {
+	if (1 == 0) {
 		require  $viewDir . 'footer.php';
 	}
-	?></body>
+	?>
+</body>
 
 </html>

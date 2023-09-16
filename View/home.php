@@ -105,6 +105,9 @@
 </div>
 <!--  -->
 <!-- Phần ngăn cách -->
+<div class="mx-auto  items-center text-center text-grey-500 text center hover:rounded font-bold hover:underline w-1/6  mt-4 	cursor-pointer">
+	Xem tất cả sản phẩm >>
+</div>
 <hr class="w-3/4 h-1 mx-auto mt-4 bg-gray-100 border-0 rounded ">
 
 <!-- Mo dau phan san pham moi -->
