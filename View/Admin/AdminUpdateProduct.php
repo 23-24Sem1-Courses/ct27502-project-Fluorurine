@@ -1,8 +1,5 @@
 <?php
 
-use Model\ProductModel;
-
-$test = new ProductModel();
 ?>
 <div class="bg-gray-800 font-sans leading-normal tracking-normal">
 
@@ -78,82 +75,58 @@ $test = new ProductModel();
 
 				<div class="bg-gray-800 ">
 					<div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-						<h1 class="font-bold pl-2">Thống kê</h1>
+						<h1 class="font-bold pl-2"> Tạo sản phảm mới</h1>
 					</div>
 				</div>
+				<!-- TODO: Add Back button -->
 
+				<div class="relative overflow-x-auto shadow-md sm:rounded-lg  p-8">
+					<form action="http://ct275.localhost/Controller/productController.php" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="action" id="action" value="update">
+						<input type="hidden" name="productid" id="idfield">
+						<div class=" grid gap-6 mb-6 md:grid-cols-2">
+							<div>
+								<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Tên sản phẩm</label>
+								<input required type="text" id="productname" name="productname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập tên sản phẩm" required>
+							</div>
+							<div>
+								<label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Giá sản phẩm</label>
+								<input required type="text" id="productprice" name="productprice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập giá sản phẩm" required>
+							</div>
+						</div>
+						<div>
+							<label for="category" class="block mb-2 text-sm font-medium text-gray-900 mb-2 ">Chọn loại sản phẩm</label>
+							<select required id="category" name="productcategory" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
-				<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-					<table class="w-full text-sm text-left text-gray-500">
-						<thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
-							<tr>
-								<th scope="col" class="px-6 py-3 w-2">
-									STT
-								</th>
-								<th scope="col" class="px-6 py-3">
-									Tên sản phẩm
-								</th>
-								<th scope="col" class="px-6 py-3">
-									Hình miêu tả
-								</th>
-								<th scope="col" class="px-6 py-3">
-									Thể loại
-								</th>
-								<th scope="col" class="px-6 py-3">
-									Giá
-								</th>
-								<th scope="col" class=" px-6 py-3">
-									Hành động
-								</th>
-							</tr>
-						</thead>
-						<tbody id="content"=>
-							<!--  -->
-							<tr class="bg-white border-b ">
-								<td class="px-6 py-4  border w-2">1</td>
-								<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-									Apple MacBook Pro 17"
-								</th>
-								<td class="px-6 py-4">
-									Silver
-								</td>
-								<td class="px-6 py-4">
-									Laptop
-								</td>
-								<td class="px-6 py-4">
-									$2999
-								</td>
-								<td class="px-6 py-4">
-									<div class="flex w-32 font-bold justify-between  "><a href="#" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a><a href="#" class="font-bold  hover:underline text-red-600 hover:underline">Xoá</a></div>
-								</td>
-							</tr>
-							</tr>
-						</tbody>
-					</table>
+								<option value="CAT1" selected>Điên thoại</option>
+								<option value="CAT2">Máy tính</option>
+								<option value="CAT3">Dụng cụ làm bếp</option>
+								<option value="CAT4">Gia dụng</option>
+							</select>
+						</div>
+						<div>
+							<label class="block mb-2	 text-sm font-medium text-gray-900 " for="file_input">Tải ảnh lên</label>
+							<input required class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  mb-2 focus:outline-none" aria-describedby="file_input_help" onchange="preview();" id="productimage" type="file" name="productimage">
+							<p class="mt-1 text-sm text-gray-500 mb-2" id="file_input_help">SVG, PNG, hoặc JPG.</p>
+						</div>
+						<img id="previewimage" alt="Preview Image" class="hidden w-64 h-64" src="" />
+						<div>
+							<label for="description" class="block mb-2 text-sm font-medium text-gray-900 mb-2 ">Viết mô tả sản phẩm</label>
+							<div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50">
+								<div class=" bg-white rounded-t-lg">
+									<textarea id="description" name="description" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 " placeholder="Viết mô tả sản phẩm ở đây..." required></textarea>
+								</div>
+
+							</div>
+						</div>
+
+						<button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+					</form>
 				</div>
 
-				<!-- Pagiantion -->
-				<div class="flex flex-col items-center">
-					<!-- Help text -->
-					<span class="text-sm text-gray-700 " id="pagination">
-						Showing <span class="font-semibold text-gray-900 ">1</span> to <span class="font-semibold text-gray-900 ">10</span> of <span class="font-semibold text-gray-900 ">100</span> Entries
-					</span>
-					<div class="inline-flex mt-2 xs:mt-0">
-						<!-- Buttons -->
-						<button class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 " id="previousbtn">
-							<svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
-							</svg>
-							Lùi
-						</button>
-						<button class="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 " id="nextbtn">
-							Tiếp
-							<svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-							</svg>
-						</button>
-					</div>
-				</div>
+
+
+
 
 			</div>
 		</section>
@@ -161,84 +134,30 @@ $test = new ProductModel();
 </div>
 
 
+
 <script>
-	let currentpage = 1;
-	let pagesize = 8;
-	let count = JSON.parse('<?= $test->count() ?>')[0].count;
-	let refreshPage = (num) => {
-		// Phân tranhg here
-		let row = `	Đang hiển thị <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + 1}</span> đến <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + pagesize}</span> của <span class="font-semibold text-gray-900 ">${count}</span> sản phẩm`
-		$('#pagination').html(row);
-		// End of phân trang
-
-		$.ajax({
-			url: 'http://ct275.localhost/Controller/productController.php?action=readPage&page=' + num,
-			type: 'GET',
-			success: function(response) {
-				$('#content').empty();
-				console.log(response);
-				// Iterate over the JSON response and append table rows
-				$.each(response, function(index, product) {
-					console.log(product);
-
-					let row = `
-						<tr class="hover:bg-gray-100">
-								<td class="px-6 py-4 border w-2 ">${product.id}</td>
-								<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${product.name}</td>
-								<td class="px-6 py-4 border"><img src="${product.file_path}" alt="${product.name}" class="w-20 h-20"></td>
-								<td class="px-6 py-4 border">${product.category}</td>
-								<td class="px-6 py-4 border">${product.price}</td>
-								<td class="px-6 py-4 border">
-										<div class="flex w-32 font-bold justify-between">
-												<!-- TODO: Thêm trang để chỉnh sửa dữ liệu -->
-												<a href="http://ct275.localhost/adminupdate.php?id=${product.id}" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
-												<a class="font-bold hover:underline text-red-600 hover:underline" onclick="deleteItem('${product.id}')">Xoá</a>
-										</div>
-								</td>
-						</tr>`
-					$('#content').append(row);
-				});
-
-
-			},
-			error: function(xhr, status, error) {
-				// Handle errors
-				console.log("Error: " + error);
-			}
-		});
-	}
-
-	$('#previousbtn').click(() => {
-		handlePageClick(currentpage - 1)
-	});
-	$('#nextbtn').click(() => {
-		handlePageClick(currentpage + 1)
-	});
-
-	let handlePageClick = (i) => {
-		if (i > 0 && i <= Math.ceil(count / pagesize)) {
-			console.log(i);
-			currentpage = i;
-			refreshPage(currentpage)
-		}
-	}
-	// Sử lý sự kieenjclick vào nút phân trang
-	let deleteItem = (id) => {
-
-		$.ajax({
-			url: 'http://ct275.localhost/Controller/productController.php?action=delete&id=' + id,
-			type: 'GET',
-			success: function(response) {
-				refreshPage(currentpage)
-			},
-			error: function(xhr, status, error) {
-				// Handle errors
-				console.log("Error: " + error);
-			}
-		});
-		refreshPage(currentpage)
-	}
 	$(document).ready(function() {
-		refreshPage(currentpage)
+		$.ajax({
+			url: 'http://ct275.localhost/Controller/productController.php?action=read&id=' + (new URLSearchParams(window.location.search)).get('id'),
+			type: 'GET',
+			success: function(response) {
+				let result = response[0]
+				console.log(result);
+				$('#productname').val(result.name);
+				$('#productprice').val(result.price);
+				$('#description').val(result.description);
+				$('#productcategory').val(result.category);
+				$('#idfield').val(result.id);
+			},
+			error: function(xhr, status, error) {
+				// Handle errors
+				console.log("Error: " + error);
+			}
+		});
 	})
+
+	function preview() {
+		$("#previewimage").attr("src", URL.createObjectURL(event.target.files[0]));
+		$("#previewimage").show();
+	}
 </script>

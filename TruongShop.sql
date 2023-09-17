@@ -11,6 +11,7 @@ CREATE TABLE products (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   description TEXT,
+	category VARCHAR(255) NOT NULL,
   price DECIMAL(10, 2) NOT NULL,
   file_path VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -21,7 +22,9 @@ VALUES ('username1', 'John', 'Doe', 'john.doe@example.com', 'password1', CURRENT
        ('username2', 'Jane', 'Smith', 'jane.smith@example.com', 'password2', CURRENT_TIMESTAMP),
        ('username3', 'Michael', 'Johnson', 'michael.johnson@example.com', 'password3', CURRENT_TIMESTAMP),
        ('username20', 'Sarah', 'Williams', 'sarah.williams@example.com', 'password20', CURRENT_TIMESTAMP);
-INSERT INTO products (name, description, price, file_path)
-VALUES ('Product 1', 'Description 1', 10.99, '/path/to/file1'),
-       ('Product 2', 'Description 2', 19.99, '/path/to/file2'),
-       ('Product 3', 'Description 3', 5.99, '/path/to/file3');
+INSERT INTO products (name, description,category, price, file_path)
+VALUES
+  ('Example 1', 'Description 1', 'Category 1', 9.99, '/path/to/file1'),
+  ('Example 2', 'Description 2', 'Category 2', 19.99, '/path/to/file2'),
+  ('Example 3', 'Description 3', 'Category 1', 14.99, '/path/to/file3'),
+  ('Example 20', 'Description 20', 'Category 2', 12.99, '/path/to/file20');

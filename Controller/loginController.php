@@ -21,7 +21,7 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && strlen($_POST["use
 			$password = $row['passwd'];
 		}
 	}
-	if (!is_null($username) && !is_null($password)) {
+	if (!empty($username) && !empty($password)) {
 		$_SESSION['username'] = $username;
 		$_SESSION['password'] = $password;
 		header("Location: http://ct275.localhost/logininfo.php");

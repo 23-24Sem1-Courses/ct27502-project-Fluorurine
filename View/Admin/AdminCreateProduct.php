@@ -78,10 +78,11 @@
 						<h1 class="font-bold pl-2"> Tạo sản phảm mới</h1>
 					</div>
 				</div>
-
+				<!-- TODO: Add Back button -->
 
 				<div class="relative overflow-x-auto shadow-md sm:rounded-lg  p-8">
 					<form action="http://ct275.localhost/Controller/productController.php" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="action" id="action" value="create">
 						<div class=" grid gap-6 mb-6 md:grid-cols-2">
 							<div>
 								<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Tên sản phẩm</label>
