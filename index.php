@@ -50,8 +50,14 @@
 		case 'account':
 			require  $viewDir . 'account.php';
 			break;
+		case 'cart':
+			require  $viewDir . 'cart.php';
+			break;
 		case 'test':
 			require  $viewDir . 'test.php';
+			break;
+		case 'category':
+			require  $viewDir . 'category.php';
 			break;
 		case 'productdetail':
 			require  $viewDir . 'productdetail.php';
@@ -68,6 +74,7 @@
 		case 'admincreate':
 			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminCreateProduct.php';
 			break;
+
 			//Error View
 		default:
 			require $viewDir . '404.php';

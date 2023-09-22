@@ -81,4 +81,36 @@ class ProductModel
 
 		]);
 	}
+	public function getcategory($sorttype, $categories)
+	{
+		#sort type 1: Newest 2: Oldest 3:Highest 4: Lowest
+		$categorystring = "";
+		// Nếu chuỗi có độ dài bằng 0 thì không làm gì cả vấn là chuỗi rỗng
+		if (count($categories) > 0) {
+
+
+			$categorystring = " WHERE category IN ( '" . implode("', '", $categories) . "') ";
+		}
+		$sorttypestring	= "";
+		switch ($sorttype) {
+			case 1:
+				$sorttypestring = "id DESC";
+				break;
+			case 2:
+				$sorttypestring = "id ASC";
+				break;
+			case 3:
+				$sorttypestring = "price DESC";
+				break;
+			case 4:
+				$sorttypestring = "price ASC";
+				break;
+			default:
+				$sorttypestring = "id DESC";
+				break;
+		}
+		$query = 'SELECT * FROM ' . $this->table . $categorystring . "ORDER BY " . $sorttypestring;
+
+		return $this->database->fetchAll($query,  []);
+	}
 }

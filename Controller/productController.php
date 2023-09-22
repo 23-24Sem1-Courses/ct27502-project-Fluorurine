@@ -115,4 +115,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 			echo '<script>window.location.href = "http://ct275.localhost/admincreate.php";</script>';
 		}
 	}
+
+	if ($_GET['action'] === 'category') {
+		try {
+
+			$json = json_encode($test->getcategory($_GET['sorttype'], $_GET['categories']));
+			header('Content-Type: application/json');
+			echo $json;
+		} catch (Exception $e) {
+
+			echo '<script>alert("Lỗi truy  xuất danh mục.");</script>';
+
+			echo '<script>window.location.href = "http://ct275.localhost/";</script>';
+		}
+	}
 }
