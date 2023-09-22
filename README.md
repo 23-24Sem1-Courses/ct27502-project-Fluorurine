@@ -1,4 +1,3 @@
 # CT275-Project
 
-Code để project CT275. Ýe
-This is to test the CT275
+Code để làm đồ án CT275. :3
