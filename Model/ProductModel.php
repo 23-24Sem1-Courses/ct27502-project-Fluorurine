@@ -52,11 +52,23 @@ class ProductModel
 		$query = 'SELECT * FROM ' . $this->table . " LIMIT " . $limit * ($page - 1) . "," . $limit;
 		return $this->database->fetchAll($query,  []);
 	}
+	// public function count2()
+	// {
+
+	// 	$query = 'SELECT LAST_INSERT_ID() FROM ' . $this->table;
+	// 	return $this->database->fetchAll($query,  []);
+	// }
 	public function count()
 	{
 		$query = 'SELECT count(*) as count FROM ' . $this->table;
 		$row = $this->database->fetchAll($query,  []);
 		return json_encode($row);
+	}
+	public function count2()
+	{
+		$query = 'SELECT count(*) as count FROM ' . $this->table;
+		return $row = $this->database->fetchAll($query,  []);
+		// return json_encode($row);
 	}
 	// Update a user
 	public function update($id, $name, $description, $category, $price, $file_path)
@@ -80,6 +92,20 @@ class ProductModel
 			'id' => $id,
 
 		]);
+	}
+	public function getLatest($limit = 8)
+	{
+		$query = 'SELECT * FROM ' . $this->table . " ORDER BY id DESC LIMIT " . $limit;
+		return $this->database->fetchAll($query,  []);
+	}
+	// Có thể xem xét để fetch id từ file config bên ngoài
+	public function getRecommend()
+	{
+		$ids = [1, 2, 7, 9];
+		$idList = implode(',', $ids);
+
+		$query = 'SELECT * FROM ' . $this->table . " WHERE id IN ($idList)";
+		return $this->database->fetchAll($query,  []);
 	}
 	public function getcategory($sorttype, $categories)
 	{

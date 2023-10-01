@@ -65,6 +65,9 @@
 		case 'productinfo':
 			require  $viewDir . 'productinfo.php';
 			break;
+		case 'receiptdetail':
+			require  $viewDir . 'receiptdetail.php';
+			break;
 		case 'adminproduct':
 			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminProduct.php';
 			break;

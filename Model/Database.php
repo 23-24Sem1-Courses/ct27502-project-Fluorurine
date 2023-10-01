@@ -51,11 +51,14 @@ class Database
 		$stmt = $this->query($sql, $params);
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
+	public function getLastId()
+	{
+		return $this->pdo->lastInsertId();
+		// Có thể thêm vào nữa (Sẽ suy nghĩ sau)
 
-	// Có thể thêm vào nữa (Sẽ suy nghĩ sau)
-
-	// public function lastInsertId()
-	// {
-	//   return $this->pdo->lastInsertId();
-	// }
+		// public function lastInsertId()
+		// {
+		//   return $this->pdo->lastInsertId();
+		// }
+	}
 }

@@ -18,12 +18,12 @@
 
 
 					<div class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-						<div class="py-1" role="none" id="sorttypechose">
+						<div class="py-1 hidden" role="none" id="sorttypechose">
 
-							<a class="font-medium text-gray-900 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0" onclick="setsorttype(1)">Từ mới tới cũ</a>
-							<a class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2" onclick="setsorttype(2)">Từ cũ tới mới</a>
-							<a class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3" onclick="setsorttype(3)">Giá: Cao đến thấp</a>
-							<a class="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-4" onclick="setsorttype(4)">Giá: Thấp đến cao</a>
+							<a class="text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-1" onclick="setsorttype(1)">Từ mới tới cũ</a>
+							<a class="text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-2" onclick="setsorttype(2)">Từ cũ tới mới</a>
+							<a class="text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-3" onclick="setsorttype(3)">Giá: Cao đến thấp</a>
+							<a class="text-gray-500 block px-4 py-2 text-sm cursor-pointer hover:font-bold" role="menuitem" tabindex="-1" id="menu-item-4" onclick="setsorttype(4)">Giá: Thấp đến cao</a>
 						</div>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 			<h2 id="products-heading" class="sr-only">Products</h2>
 
 			<div class="grid grid-cols-5 gap-x-8 gap-y-10 ">
-				<form class="hidden lg:block" method="GET" action="http://ct275.localhost/Controller/productController.php?action=rcategory" id="categoryform">
+				<form class=" block" method="GET" action="http://ct275.localhost/Controller/productController.php?action=rcategory" id="categoryform">
 					<input type="hidden" name="sorttype" id="sorttype" value="1">
 					<h3 class="font-bold text-xl">Danh mục</h3>
 
@@ -56,36 +56,36 @@
 						<div class="pt-6" id="categories">
 							<div class="space-y-4">
 								<div class="flex items-center">
-									<input id="filter-category-0" name="categories[]" value="CAT1" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-									<label for="filter-category-0" class="ml-3 text-sm text-gray-600">CAT1</label>
+									<input id="CAT1" name="categories[]" value="CAT1" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+									<label for="CAT1" class="ml-3 text-sm text-gray-600">CAT1</label>
 								</div>
 								<div class="flex items-center">
-									<input id="filter-category-1" name="categories[]" value="CAT2" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-									<label for="filter-category-1" class="ml-3 text-sm text-gray-600">CAT2</label>
+									<input id="CAT2" name="categories[]" value="CAT2" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+									<label for="CAT2" class="ml-3 text-sm text-gray-600">CAT2</label>
 								</div>
 								<div class="flex items-center">
-									<input id="filter-category-2" name="categories[]" value="CAT3" type="checkbox" checked class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-									<label for="filter-category-2" class="ml-3 text-sm text-gray-600">CAT3</label>
+									<input id="CAT3" name="categories[]" value="CAT3" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+									<label for="CAT3" class="ml-3 text-sm text-gray-600">CAT3</label>
 								</div>
 								<div class="flex items-center">
-									<input id="filter-category-3" name="categories[]" value="CAT4" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-									<label for="filter-category-3" class="ml-3 text-sm text-gray-600">CAT4</label>
+									<input id="CAT4" name="categories[]" value="CAT4" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+									<label for="CAT4" class="ml-3 text-sm text-gray-600">CAT4</label>
 								</div>
 								<div class="flex items-center">
-									<input id="filter-category-4" name="categories[]" value="CAT5" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-									<label for="filter-category-4" class="ml-3 text-sm text-gray-600">CAT5</label>
+									<input id="CAT5" name="categories[]" value="CAT5" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+									<label for="CAT5" class="ml-3 text-sm text-gray-600">CAT5</label>
 								</div>
 							</div>
 						</div>
 					</div>
-					<button class="font-bold underline" type="submit">Tìm kiếm >></button>
+					<button id="catsearch" class="font-bold underline inline-flex whitespace-nowrap pt-4" type="button">Tìm kiếm >></button>
 				</form>
 
 				<!-- Product grid -->
-				<div class="lg:col-span-4 border border-gray-200">
+				<div class="col-span-4 border border-gray-200">
 
 					<!-- Your content -->
-					<div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+					<div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 						<div class="group relative">
 							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
 								<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
@@ -197,59 +197,76 @@
 </div>
 </div>
 <script>
-	function setsorttype(type) {
-		document.getElementById("sorttype").value = type;
+	function setsorttype(newindex) {
+		const oldindex = document.getElementById("sorttype").value;
+		$("#menu-item-" + oldindex).removeClass("font-medium text-gray-900").addClass("text-gray-500");
+		$("#menu-item-" + newindex).removeClass("text-gray-500").addClass("font-medium text-gray-900");
+		document.getElementById("sorttype").value = newindex;
 		console.log(document.getElementById("sorttype").value);
 
 	}
-	$categoryform = $('#categoryform');
-	$categoryform.submit(function(e) {
-		e.preventDefault();
-		var formData = $(this).serialize();
+	setsorttype(1)
+	//
+	$("#menu-button").click(function() {
+		$("#sorttypechose").toggleClass("hidden");
+	});
+	const params = new URLSearchParams(document.location.search);
+	if (params) {
+		switch (params.get("cat")) {
+			case "all":
+				for (let i = 1; i < 6; i++) {
 
+					$("#CAT" + i).prop("checked", true);
+				}
+				break;
+
+			default:
+				$("#CAT" + params.get("cat")).prop("checked", true);
+				break;
+
+		}
+	}
+	categoryform = $('#categoryform');
+	$("catsearch").click(
+		function() {
+			console.log($("#categoryform").serialize());
+			refreshPage();
+		}
+	)
+	const refreshPage = () => {
+		const fromData = $("#categoryform").serialize();
 		$.ajax({
 			url: 'http://ct275.localhost/Controller/productController.php?action=category',
 			data: formData,
 			type: 'GET',
 			success: function(response) {
-				console.log("Click");
+				$('#content').empty();
 				console.log(response);
+				// Iterate over the JSON response and append table rows
+				// $.each(response, function(index, product) {
+				// 	console.log(product);
 
+				// 	let row = `
+				// 		<tr class="hover:bg-gray-100">
+				// 				<td class="px-6 py-4 border w-2 ">${product.id}</td>
+				// 				<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${product.name}</td>
+				// 				<td class="px-6 py-4 border"><img src="${product.file_path}" alt="${product.name}" class="w-20 h-20"></td>
+				// 				<td class="px-6 py-4 border">${product.category}</td>
+				// 				<td class="px-6 py-4 border">${product.price}</td>
+				// 				<td class="px-6 py-4 border">
+				// 						<div class="flex w-32 font-bold justify-between">
+				// 								<!-- TODO: Thêm trang để chỉnh sửa dữ liệu -->
+				// 								<a href="http://ct275.localhost/adminupdate.php?id=${product.id}" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
+				// 								<a class="font-bold hover:underline text-red-600 hover:underline" onclick="deleteItem('${product.id}')">Xoá</a>
+				// 						</div>
+				// 				</td>
+				// 		</tr>`
+				// 	$('#content').append(row);
+				// });
 			},
 			error: function(xhr, status, error) {
 				// Handle errors
 				console.log("Error: " + error);
-			}
-		});
-	})
-	const refreshPage = (num) => {
-		$.ajax({
-			url: 'http://ct275.localhost/Controller/productController.php?action=category',
-			type: 'GET',
-			success: function(response) {
-				$('#content').empty();
-				console.log(response);
-				// Iterate over the JSON response and append table rows
-				$.each(response, function(index, product) {
-					console.log(product);
-
-					let row = `
-						<tr class="hover:bg-gray-100">
-								<td class="px-6 py-4 border w-2 ">${product.id}</td>
-								<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${product.name}</td>
-								<td class="px-6 py-4 border"><img src="${product.file_path}" alt="${product.name}" class="w-20 h-20"></td>
-								<td class="px-6 py-4 border">${product.category}</td>
-								<td class="px-6 py-4 border">${product.price}</td>
-								<td class="px-6 py-4 border">
-										<div class="flex w-32 font-bold justify-between">
-												<!-- TODO: Thêm trang để chỉnh sửa dữ liệu -->
-												<a href="http://ct275.localhost/adminupdate.php?id=${product.id}" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
-												<a class="font-bold hover:underline text-red-600 hover:underline" onclick="deleteItem('${product.id}')">Xoá</a>
-										</div>
-								</td>
-						</tr>`
-					$('#content').append(row);
-				});
 			}
 		})
 	}

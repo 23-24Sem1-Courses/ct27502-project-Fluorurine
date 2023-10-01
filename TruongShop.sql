@@ -15,8 +15,22 @@ CREATE TABLE products (
   price DECIMAL(10, 2) NOT NULL,
   file_path VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) CHARACTER SET utf8;
+CREATE TABLE receipts (
+  id INT NOT NULL AUTO_INCREMENT,
+  customer_id INT NOT NULL,
+  date DATETIME DEFAULT CURRENT_TIMESTAMP,
+  address TEXT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (customer_id) REFERENCES customers (id)
+)CHARACTER SET utf8;
 
+CREATE TABLE receipt_items (
+  id INT NOT NULL AUTO_INCREMENT,
+  receipt_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+);
 INSERT INTO users (username, firstname, lastname, email, passwd, created_at)
 VALUES ('username1', 'John', 'Doe', 'john.doe@example.com', 'password1', CURRENT_TIMESTAMP),
        ('username2', 'Jane', 'Smith', 'jane.smith@example.com', 'password2', CURRENT_TIMESTAMP),
@@ -28,3 +42,5 @@ VALUES
   ('Example 2', 'Description 2', 'Category 2', 19.99, '/path/to/file2'),
   ('Example 3', 'Description 3', 'Category 1', 14.99, '/path/to/file3'),
   ('Example 20', 'Description 20', 'Category 2', 12.99, '/path/to/file20');
+
+CREATE INDEX product_index ON products (id);
