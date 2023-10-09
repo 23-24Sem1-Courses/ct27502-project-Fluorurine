@@ -63,7 +63,7 @@ $test = new ProductModel();
 				<div class="bg-gray-800 ">
 
 					<div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-						<h1 class="font-bold pl-2">Quản lý tất cả sản phẩm</h1>
+						<h1 class="font-bold pl-2">Quản lý tất cả người dùng</h1>
 
 					</div>
 
@@ -78,23 +78,22 @@ $test = new ProductModel();
 									STT
 								</th>
 								<th scope="col" class="px-6 py-3">
-									Tên sản phẩm
+									Tên người dùng
 								</th>
 								<th scope="col" class="px-6 py-3">
 									Hình miêu tả
 								</th>
 								<th scope="col" class="px-6 py-3">
-									Thể loại
+									Email
 								</th>
-								<th scope="col" class="px-6 py-3">
-									Giá
-								</th>
+
 								<th scope="col" class=" px-6 py-3">
 									Hành động
 								</th>
 							</tr>
 						</thead>
-						<tbody id="content"=>
+						<!-- Nhớ là USER đã bỏ một phần rồi -->
+						<tbody id="content">
 
 						</tbody>
 					</table>

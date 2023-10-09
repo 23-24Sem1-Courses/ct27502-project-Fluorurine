@@ -3,7 +3,7 @@
 use Model\ProductModel;
 
 $test = new ProductModel();
-print_r(($test->readAll()));
+// print_r(($test->readAll()));
 $productarray = $test->readAll();
 // foreach ($test->readAll()[0] as $key => $value) {
 // 	echo $key;
@@ -68,60 +68,65 @@ $productarray = $test->readAll();
 <!-- Đây là phần category section để người dùng chọn -->
 <h2 class="text-2xl font-bold tracking-tight text-gray-900  sm:px-2  py-8 text-center mx-auto">Danh mục sản phẩm </h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6 w-full">
-	<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
-		<div class="w-16 h-16 bg-gray-100 rounded-lg">
-			<img src="public/HomePageImage/CAT1.jpg" alt="">
+	<a href="http://ct275.localhost/category?cat=1">
+		<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
+			<div class="w-16 h-16 bg-gray-100 rounded-lg">
+				<img src="public/HomePageImage/CAT1.jpg" alt="">
+			</div>
+			<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
+				Điện thoại di động
+			</h2>
 		</div>
+	</a>
+	<a href="http://ct275.localhost/category?cat=2">
 
-		<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
-			Điện thoại di động
-		</h2>
-	</div>
+		<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
+			<div class="w-16 h-16 bg-gray-100 rounded-lg">
+				<img src="public/HomePageImage/CAT2.jpg" alt="">
+			</div>
 
-	<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
-		<div class="w-16 h-16 bg-gray-100 rounded-lg">
-			<img src="public/HomePageImage/CAT2.jpg" alt="">
+			<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
+				Đồ gia dụng
+			</h2>
 		</div>
+	</a>
 
-		<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
-			Đồ gia dụng
-		</h2>
-	</div>
+	<a href="http://ct275.localhost/category?cat=3">
+		<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
+			<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT3.jpg" alt=""></div>
+			<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
+				Bách hoá
+			</h2>
+		</div>
+	</a>
 
-	<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
-		<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT3.jpg" alt=""></div>
+	<a href="http://ct275.localhost/category?cat=4">
+		<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
+			<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT4.jpg" alt=""></div>
+			<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
+				Thời trang nam
+			</h2>
+		</div>
+	</a>
 
-		<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
-			Bách hoá
-		</h2>
-	</div>
+	<a href="http://ct275.localhost/category?cat=5">
+		<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
+			<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT5.jpg" alt=""></div>
+			<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
+				Dụng cụ thể cao
+			</h2>
+		</div>
+	</a>
 
-	<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
-		<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT4.jpg" alt=""></div>
-
-		<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
-			Thời trang nam
-		</h2>
-	</div>
-
-	<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
-		<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT5.jpg" alt=""></div>
-
-		<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
-			Dụng cụ thể cao
-		</h2>
-	</div>
-
-	<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
-		<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT6.jpg" alt=""></div>
-
-		<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
-			Mỹ
-
-			phẩm
-		</h2>
-	</div>
+	<a href="http://ct275.localhost/category?cat=6">
+		<div class="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center" style="min-height: 160px">
+			<div class="w-16 h-16 bg-gray-100 rounded-lg"> <img src="public/HomePageImage/CAT6.jpg" alt=""></div>
+			<h2 class="mt-2 text-gray-800 text-sm font-semibold line-clamp-1">
+				Mỹ phẩm
+			</h2>
+		</div>
 </div>
+</a>
 <!--  -->
 <!-- Phần ngăn cách -->
 <div class="mx-auto  items-center text-center text-grey-500 text center hover:rounded font-bold hover:underline w-1/6  mt-4 	cursor-pointer">
@@ -255,7 +260,7 @@ $productarray = $test->readAll();
 				</svg>
 			</a>
 			<a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 ">
-				Speak to Sales
+				Nói chuyện với nhân viên thanh toán
 			</a>
 		</div>
 		<div class="hidden lg:mt-0 lg:col-span-5 lg:flex">

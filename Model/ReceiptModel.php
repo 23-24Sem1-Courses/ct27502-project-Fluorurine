@@ -21,21 +21,28 @@ class ReceiptModel
 
 	// Create a new user
 	//Validate rồi thêm vào 2 bảng dữ liệu
-	public function create($customerid, $address, $sessionarray)
+	public function create($sessionarray, $address, $customerid)
 	{
-		$query = 'INSERT INTO ' . $this->table . '(customerid address) VALUES (:customerid, :address)';
+		$query = 'INSERT INTO ' . $this->table . '(customerid, address) VALUES (:customerid, :address)';
 		$receipt_item_model = new ReceiptItemModel();
-		// TODO : Thêm validate vào sau và cho 2 cái cùng một database để cải thiện hiệu su
-		foreach ($sessionarray as $key => $value) {
-			// Chỗ này hơi phức tạp có thể cỉa thiện thêm
-			$receipt_item_model->create($this->count()[0]["count"], $key, $value);
-		}
-		return $this->database->fetchAll($query,  [
+		$this->database->fetchAll($query,  [
 			'customerid' => $customerid,
 			'address' => $address,
 		]);
+		$receiptcount = $this->count()[0]["count"];
+		foreach ($sessionarray as $key => $value) {
+			// Chỗ này hơi phức tạp có thể cỉa thiện thêm
+			$receipt_item_model->create($receiptcount, $key, $value);
+		}
+		return;
 	}
-
+	public function readfromReceiptItem($id)
+	{
+		$query = 'SELECT * FROM receipt_items WHERE receiptid = :id';
+		return $this->database->fetchAll($query,  [
+			'id' => $id,
+		]);
+	}
 	// Read all users
 	public function readByUser($id)
 	{
@@ -44,7 +51,18 @@ class ReceiptModel
 			'id' => $id,
 		]);
 	}
-
+	public function readAll()
+	{
+		$query = 'SELECT * FROM ' . $this->table;
+		return $this->database->fetchAll($query,  []);
+	}
+	public function readById($id)
+	{
+		$query = 'SELECT * FROM ' . $this->table . " WHERE id  = :id";
+		return $this->database->fetchAll($query,  [
+			'id' => $id,
+		]);
+	}
 	//Mặc định limit là 20
 	public function readPage($page, $limit = 8)
 	{

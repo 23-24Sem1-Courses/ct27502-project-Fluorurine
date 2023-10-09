@@ -58,6 +58,22 @@ class ProductModel
 	// 	$query = 'SELECT LAST_INSERT_ID() FROM ' . $this->table;
 	// 	return $this->database->fetchAll($query,  []);
 	// }
+	public function readFromArray($array)
+	{
+		if (count($array) == 0) {
+			return [];
+		}
+		$valueArray = [];
+
+		foreach ($array as $key => $value) {
+			$valueArray[] = $key;
+		}
+
+		// $query = 'SELECT * FROM ' . $this->table . " WHERE id IN ( 1 ,2 ,3) ";
+
+		$query = 'SELECT * FROM ' . $this->table . " WHERE id IN ( " . implode(", ", $valueArray) . ") ";
+		return $this->database->fetchAll($query,  []);
+	}
 	public function count()
 	{
 		$query = 'SELECT count(*) as count FROM ' . $this->table;

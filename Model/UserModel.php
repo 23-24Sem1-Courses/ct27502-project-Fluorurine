@@ -40,7 +40,7 @@ class UserModel
 			'username' => $username,
 		]);
 	}
-
+	//TODO validate session ở đây
 	// Update a user
 	public function update($firstname, $lastname, $username, $email, $passwd)
 	{

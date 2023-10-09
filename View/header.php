@@ -14,7 +14,9 @@
 		</div>
 
 		<ul class="flex items-center space-x-6 mr-5">
-			<li class="font-semibold text-gray-700 ">Giỏ hàng</li>
+			<a href="http://ct275.localhost/cart">
+				<li class="font-semibold text-gray-700 ">Giỏ hàng</li>
+			</a>
 			<li class="font-semibold text-gray-700">Đơn hàng</li>
 			<!-- <li>
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

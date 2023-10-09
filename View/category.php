@@ -42,7 +42,7 @@
 		</div>
 
 		<section aria-labelledby="products-heading" class="pb-24 pt-6">
-			<h2 id="products-heading" class="sr-only">Products</h2>
+
 
 			<div class="grid grid-cols-5 gap-x-8 gap-y-10 ">
 				<form class=" block" method="GET" action="http://ct275.localhost/Controller/productController.php?action=rcategory" id="categoryform">
@@ -75,6 +75,10 @@
 									<input id="CAT5" name="categories[]" value="CAT5" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
 									<label for="CAT5" class="ml-3 text-sm text-gray-600">CAT5</label>
 								</div>
+								<div class="flex items-center">
+									<input id="CAT5" name="categories[]" value="CAT6" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+									<label for="CAT5" class="ml-3 text-sm text-gray-600">CAT6</label>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -85,110 +89,9 @@
 				<div class="col-span-4 border border-gray-200">
 
 					<!-- Your content -->
-					<div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-						<div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-								<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-								<div>
-									<h3 class="text-sm text-gray-700">
-										<a href="#">
-											<span aria-hidden="true" class="absolute inset-0"></span>
-											Basic Tee
-										</a>
-									</h3>
-									<p class="mt-1 text-sm text-gray-500">Black</p>
-								</div>
-								<p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						</div>
+					<div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 " id="productcontainer">
+
 						<!--  -->
-						<div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-								<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-								<div>
-									<h3 class="text-sm text-gray-700">
-										<a href="#">
-											<span aria-hidden="true" class="absolute inset-0"></span>
-											Basic Tee
-										</a>
-									</h3>
-									<p class="mt-1 text-sm text-gray-500">Black</p>
-								</div>
-								<p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						</div>
-						<div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-								<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-								<div>
-									<h3 class="text-sm text-gray-700">
-										<a href="#">
-											<span aria-hidden="true" class="absolute inset-0"></span>
-											Basic Tee
-										</a>
-									</h3>
-									<p class="mt-1 text-sm text-gray-500">Black</p>
-								</div>
-								<p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						</div>
-						<div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-								<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-								<div>
-									<h3 class="text-sm text-gray-700">
-										<a href="#">
-											<span aria-hidden="true" class="absolute inset-0"></span>
-											Basic Tee
-										</a>
-									</h3>
-									<p class="mt-1 text-sm text-gray-500">Black</p>
-								</div>
-								<p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						</div>
-						<div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-								<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-								<div>
-									<h3 class="text-sm text-gray-700">
-										<a href="#">
-											<span aria-hidden="true" class="absolute inset-0"></span>
-											Basic Tee
-										</a>
-									</h3>
-									<p class="mt-1 text-sm text-gray-500">Black</p>
-								</div>
-								<p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						</div>
-						<div class="group relative">
-							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-								<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-							</div>
-							<div class="mt-4 flex justify-between">
-								<div>
-									<h3 class="text-sm text-gray-700">
-										<a href="#">
-											<span aria-hidden="true" class="absolute inset-0"></span>
-											Basic Tee
-										</a>
-									</h3>
-									<p class="mt-1 text-sm text-gray-500">Black</p>
-								</div>
-								<p class="text-sm font-medium text-gray-900">$35</p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -227,14 +130,15 @@
 		}
 	}
 	categoryform = $('#categoryform');
-	$("catsearch").click(
+	$("#catsearch").click(
+
 		function() {
-			console.log($("#categoryform").serialize());
 			refreshPage();
 		}
 	)
 	const refreshPage = () => {
-		const fromData = $("#categoryform").serialize();
+		const formData = $("#categoryform").serialize();
+		console.log(formData);
 		$.ajax({
 			url: 'http://ct275.localhost/Controller/productController.php?action=category',
 			data: formData,
@@ -243,26 +147,31 @@
 				$('#content').empty();
 				console.log(response);
 				// Iterate over the JSON response and append table rows
-				// $.each(response, function(index, product) {
-				// 	console.log(product);
+				$('#productcontainer').empty();
+				$.each(response, function(index, product) {
+					console.log(product);
 
-				// 	let row = `
-				// 		<tr class="hover:bg-gray-100">
-				// 				<td class="px-6 py-4 border w-2 ">${product.id}</td>
-				// 				<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${product.name}</td>
-				// 				<td class="px-6 py-4 border"><img src="${product.file_path}" alt="${product.name}" class="w-20 h-20"></td>
-				// 				<td class="px-6 py-4 border">${product.category}</td>
-				// 				<td class="px-6 py-4 border">${product.price}</td>
-				// 				<td class="px-6 py-4 border">
-				// 						<div class="flex w-32 font-bold justify-between">
-				// 								<!-- TODO: Thêm trang để chỉnh sửa dữ liệu -->
-				// 								<a href="http://ct275.localhost/adminupdate.php?id=${product.id}" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
-				// 								<a class="font-bold hover:underline text-red-600 hover:underline" onclick="deleteItem('${product.id}')">Xoá</a>
-				// 						</div>
-				// 				</td>
-				// 		</tr>`
-				// 	$('#content').append(row);
-				// });
+					let row = `
+						<div class="group relative"><a href="http://ct275.localhost/productdetail?id=${product.id}">
+							<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+								<img src="${product.file_path}" title="${product.name}"  class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+							</div>
+							<div class="mt-4 flex justify-between">
+								<div>
+									<h3 class="text-sm text-gray-700">
+										<a href="#">
+
+											${product.name}
+										</a>
+									</h3>
+									<p class="mt-1 text-sm text-gray-500">${product.category}</p>
+								</div>
+								<p class="text-sm font-medium text-gray-900">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'VND' }).format(parseFloat(product.price))}</p>
+							</div>
+					</a>	</div>`
+
+					$('#productcontainer').append(row);
+				});
 			},
 			error: function(xhr, status, error) {
 				// Handle errors
@@ -270,4 +179,5 @@
 			}
 		})
 	}
+	$("#catsearch").click();
 </script>
