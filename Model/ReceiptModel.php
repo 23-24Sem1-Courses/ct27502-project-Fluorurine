@@ -63,6 +63,12 @@ class ReceiptModel
 			'id' => $id,
 		]);
 	}
+	// read the id in as array and return the corressponding id and price of the product have id in that array
+	public function getPrice($id)
+	{
+		$query = 'SELECT id, price FROM products WHERE id IN (' . implode(',', $id) . ')';
+		return $this->database->fetchAll($query,  []);
+	}
 	//Mặc định limit là 20
 	public function readPage($page, $limit = 8)
 	{

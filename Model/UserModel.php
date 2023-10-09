@@ -40,6 +40,12 @@ class UserModel
 			'username' => $username,
 		]);
 	}
+	//return all user form db
+	public function readAll()
+	{
+		$query = 'SELECT * FROM ' . $this->table;
+		return $this->database->fetchAll($query,  []);
+	}
 	//TODO validate session ở đây
 	// Update a user
 	public function update($firstname, $lastname, $username, $email, $passwd)
@@ -53,6 +59,13 @@ class UserModel
 			'passwd' => $passwd
 		]);
 	}
+	//read with pagiantion in page each page have default of 8 .user. the function take 2 paramater page and limit
+	public function readPage($page, $limit = 8)
+	{
+		$query = 'SELECT * FROM ' . $this->table . ' AS count LIMIT ' . $limit . ' OFFSET ' . ($page - 1) * $limit;
+		return $this->database->fetchAll($query,  []);
+	}
+
 
 	// Delete a user
 	public function delete($username)
@@ -62,5 +75,11 @@ class UserModel
 			'username' => $username,
 
 		]);
+	}
+	// return the id of last user in databese
+	public function lastid()
+	{
+		$query = 'SELECT id FROM ' . $this->table . ' ORDER BY id DESC LIMIT 1';
+		return $this->database->fetchAll($query,  []);
 	}
 }

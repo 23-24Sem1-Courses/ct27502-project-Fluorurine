@@ -14,11 +14,11 @@
 			<div class=" grid gap-6 mb-6 md:grid-cols-2">
 				<div>
 					<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Họ</label>
-					<input required type="text" id="productname" name="productname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập tên sản phẩm" required>
+					<input required type="text" id="lastname" name="lastname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập tên sản phẩm" required>
 				</div>
 				<div>
 					<label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Tên</label>
-					<input required type="text" id="productprice" name="productprice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập giá sản phẩm" required>
+					<input required type="text" id="firstname" name="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập giá sản phẩm" required>
 				</div>
 			</div>
 			<div>
@@ -27,8 +27,16 @@
 			</div>
 			<div>
 				<label for="useremail" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
-				<input required type="text" id="username" name="useremail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập tên đăng nhập" required>
+				<input required type="text" id="useremail" name="useremail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập tên đăng nhập" required>
 
+			</div>
+			<div>
+				<label for="userpasswd" class="block mb-2 text-sm font-medium text-gray-900 ">Mật khẩu</label>
+				<input required type="text" id="userpasswd" name="userpasswd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập tên đăng nhập" required>
+			</div>
+			<div>
+				<label for="repasswd" class="block mb-2 text-sm font-medium text-gray-900 ">Nhập lại mật khẩu</label>
+				<input required type="text" id="repasswd" name="repasswd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập tên đăng nhập" required>
 			</div>
 			<img id="previewimage" alt="Preview Image" class="hidden w-64 h-64" src="" />
 			<div>
@@ -40,11 +48,35 @@
 
 				</div>
 			</div>
-
-			<button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+			<div>
+				<button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+			</div>
 		</div>
 	</div>
-</div>
-<script>
+	<script>
+		// TODO: Thêm code php sau:
+		$(document).ready(function() {
+			$.ajax({
+				url: 'http://ct275.localhost/Controller/userController.php?action=read&id=' + (new URLSearchParams(window.location.search)).get('id'),
+				type: 'GET',
+				success: function(response) {
+					let result = response[0]
+					console.log(result);
+					$('#lastname').val(result.name);
+					$('#firstname').val(result.price);
+					$('#username').val(result.username);
+					$('#useremail').val(result.email);
+					$('#idfield').val(result.id);
+				},
+				error: function(xhr, status, error) {
+					// Handle errors
+					console.log("Error: " + error);
+				}
+			});
+		})
 
-</script>
+		function preview() {
+			$("#previewimage").attr("src", URL.createObjectURL(event.target.files[0]));
+			$("#previewimage").show();
+		}
+	</script>

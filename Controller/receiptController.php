@@ -121,6 +121,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			exit;
 		}
 	}
+	if ($_GET['action'] == 'readReceipt') {
+		try {
+			$data = $receiptmodel->readById($_GET['id']);
+			$json = json_encode($data);
+			header('Content-Type: application/json');
+			echo $json;
+		} catch (Exception $e) {
+			$data = [];
+			$json = json_encode($data);
+			header('Content-Type: application/json');
+			echo $json;
+			exit;
+		}
+	}
 }
 // handle create receeipt crud
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -169,20 +183,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				exit;
 			}
 		}
-		if ($_POST['action'] == 'readReceipt') {
-			try {
-				$data = $receiptmodel->readById($_POST['id']);
-				$json = json_encode($data);
-				header('Content-Type: application/json');
-				echo $json;
-			} catch (Exception $e) {
-				$data = [];
-				$json = json_encode($data);
-				header('Content-Type: application/json');
-				echo $json;
-				exit;
-			}
-		}
+
+
+
 		if ($_POST['action'] == 'deleteReceipt') {
 			try {
 				$receiptmodel->delete($_POST['id']);

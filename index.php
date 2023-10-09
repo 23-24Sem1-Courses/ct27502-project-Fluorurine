@@ -71,6 +71,12 @@
 		case 'receiptdetail':
 			require  $viewDir . 'receiptdetail.php';
 			break;
+		case 'receipt':
+			require  $viewDir . 'receipt.php';
+			break;
+		case 'adminuser':
+			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminUser.php';
+			break;
 		case 'adminproduct':
 			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminProduct.php';
 			break;
@@ -79,9 +85,6 @@
 			break;
 		case 'admincreate':
 			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminCreateProduct.php';
-			break;
-		case 'adminreceipt':
-			require  $viewDir . 'Admin' . DIRECTORY_SEPARATOR . 'AdminReceipt.php';
 			break;
 
 			//Error View

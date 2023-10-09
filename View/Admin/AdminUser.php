@@ -1,8 +1,8 @@
 <?php
 
-use Model\ProductModel;
+use Model\UserModel;
 
-$test = new ProductModel();
+$test = new UserModel();
 ?>
 <div class="bg-gray-800 font-sans leading-normal tracking-normal">
 
@@ -24,7 +24,7 @@ $test = new ProductModel();
 						</form>
 					</li>
 					<li>
-						<a href=" http://ct275.localhost/user" class="flex items-center font-bold p-2 text-base text-gray-900 rounded-lg border-b border-white-500 hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+						<a href=" http://ct275.localhost/adminuser" class="flex items-center font-bold p-2 text-base text-gray-900 rounded-lg border-b border-white-500 hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
 							<svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 								<path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
 								<path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -57,9 +57,7 @@ $test = new ProductModel();
 		<!-- Content chinh -->
 		<section class=" w-full">
 			<div id="main" class="main-content flex-1 bg-white  mt-4 ">
-				<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 float-right rounded mr-4">
-					<a href="http://ct275.localhost/admincreate">Thêm sản phẩm</a>
-				</button>
+
 				<div class="bg-gray-800 ">
 
 					<div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
@@ -131,7 +129,7 @@ $test = new ProductModel();
 <script>
 	let currentpage = 1;
 	let pagesize = 8;
-	let count = JSON.parse('<?= $test->count() ?>')[0].count;
+	let count = JSON.parse('<?= $test->lastId() ?>')[0].count;
 	let refreshPage = (num) => {
 		// Phân tranhg here
 		let row = `	Đang hiển thị <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + 1}</span> đến <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + pagesize}</span> của <span class="font-semibold text-gray-900 ">${count}</span> sản phẩm`
@@ -139,27 +137,25 @@ $test = new ProductModel();
 		// End of phân trang
 
 		$.ajax({
-			url: 'http://ct275.localhost/Controller/productController.php?action=readPage&page=' + num,
+			url: 'http://ct275.localhost/Controller/usertController.php?action=readPage&page=' + num,
 			type: 'GET',
 			success: function(response) {
 				$('#content').empty();
 				console.log(response);
 				// Iterate over the JSON response and append table rows
-				$.each(response, function(index, product) {
-					console.log(product);
+				$.each(response, function(index, user) {
+					console.log(user);
 
 					let row = `
 						<tr class="hover:bg-gray-100">
-								<td class="px-6 py-4 border w-2 ">${product.id}</td>
-								<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${product.name}</td>
-								<td class="px-6 py-4 border"><img src="${product.file_path}" alt="${product.name}" class="w-20 h-20"></td>
-								<td class="px-6 py-4 border">${product.category}</td>
-								<td class="px-6 py-4 border">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'VND' }).format(parseFloat(product.price))}</td>
+								<td class="px-6 py-4 border w-2 ">${user.id}</td>
+								<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${user.name}</td>
+								<td class="px-6 py-4 border"><img src="${user.file_path}" alt="${user.name}" class="w-20 h-20"></td>
+								<td class="px-6 py-4 border">${product.email}</td>
 								<td class="px-6 py-4 border">
 										<div class="flex w-32 font-bold justify-between">
-
-												<a href="http://ct275.localhost/adminupdate.php?id=${product.id}" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
-												<a class="font-bold hover:underline text-red-600 hover:underline" onclick="deleteItem('${product.id}')">Xoá</a>
+												<a href="http://ct275.localhost/userupdate.php?id=${user.id}" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
+												<a class="font-bold hover:underline text-red-600 hover:underline" onclick="deleteItem('${user.id}')">Xoá</a>
 										</div>
 								</td>
 						</tr>`
@@ -193,7 +189,7 @@ $test = new ProductModel();
 	let deleteItem = (id) => {
 
 		$.ajax({
-			url: 'http://ct275.localhost/Controller/productController.php?action=delete&id=' + id,
+			url: 'http://ct275.localhost/Controller/usertController.php?action=delete&id=' + id,
 			type: 'GET',
 			success: function(response) {
 				refreshPage(currentpage)
