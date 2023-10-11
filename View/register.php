@@ -1,6 +1,6 @@
 <?php
 // Check if username and password are already in session
-if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
 	// Redirect to a different page
 	header("Location: /");
 	exit;

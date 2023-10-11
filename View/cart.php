@@ -1,5 +1,5 @@
-<?php if (!empty($_SESSION['cart'])) print_r($_SESSION["cart"]);
-// $_SESSION["cart"] = []
+<?php
+//  if (!empty($_SESSION['cart'])) print_r($_SESSION["cart"]);
 ?>
 <div class="h-screen bg-gray-100 pt-20">
 	<h1 class="mb-10 text-center text-2xl font-bold">Sản phẩm trong giỏ hàng</h1>
@@ -8,7 +8,12 @@
 			<div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start" id="cart_item1">
 				<p class="text-gray-700">Không có sản phẩm nào trong giỏ hàng</p>
 			</div>
-
+			<!-- Add the address into a form and submit it-->
+			<form method="POST" id="checkout" action="http://ct275.localhost/Controller/receiptController.php">
+				<input type="hidden" name="action" value="checkout">
+				<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhập địa chỉ để nhận hàng</label>
+				<input required type="text" id="address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập địa chỉ để giao hàng" required>
+			</form>
 		</div>
 		<!-- Sub total -->
 		<div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
@@ -25,7 +30,8 @@
 					<p class="text-sm text-gray-700">bao gồm VAT</p>
 				</div>
 			</div>
-			<button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Thanh toán</button>
+
+			<button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600" onclick="handlecheckout()">Thanh toán</button>
 		</div>
 	</div>
 	<script>
@@ -37,12 +43,12 @@
 			$('.productprice').each(function() {
 				pricearray.push($(this).attr('value'));
 			});
-
 			$('.valueClass').each(function() {
 				count += parseInt($(this).val());
 				sum += parseInt($(this).val()) * parseInt(pricearray[currentindex]);
 				currentindex++;
 			});
+
 			$('#totalCount').text("" + count);
 			$('#totalSum').text(new Intl.NumberFormat('en-US', {
 				style: 'currency',
@@ -90,6 +96,10 @@
 					console.log("Error: " + error);
 				}
 			})
+		}
+		const handlecheckout = () => {
+			//submit the form
+			$('#checkout').submit();
 		}
 
 		function deleteItem(id) {

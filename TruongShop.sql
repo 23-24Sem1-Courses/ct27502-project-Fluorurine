@@ -21,8 +21,7 @@ CREATE TABLE receipts (
   userid INT NOT NULL,
   date DATETIME DEFAULT CURRENT_TIMESTAMP,
   address TEXT NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (customer_id) REFERENCES customers (id)
+  PRIMARY KEY (id)
 )CHARACTER SET utf8;
 
 CREATE TABLE receipt_items (
@@ -30,6 +29,8 @@ CREATE TABLE receipt_items (
   receipt_id INT NOT NULL,
   product_id INT NOT NULL,
   quantity INT NOT NULL,
+	price INT NOT NULL,
+	PRIMARY KEY (id)
 );
 INSERT INTO users (username, firstname, lastname, email, passwd, created_at)
 VALUES ('username1', 'John', 'Doe', 'john.doe@example.com', 'password1', CURRENT_TIMESTAMP),

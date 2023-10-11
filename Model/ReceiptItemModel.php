@@ -21,13 +21,14 @@ class ReceiptItemModel
 
 	// Create a new user
 	//Validate rồi thêm vào 2 bảng dữ liệu
-	public function create($receipt_id, $product_id, $quantity)
+	public function create($receipt_id, $product_id, $quantity, $price)
 	{
-		$query = 'INSERT INTO ' . $this->table . '(receipt_id, product_id, quantity) VALUES (:receipt_id, :product_id, :quantity)';
+		$query = 'INSERT INTO ' . $this->table . '(receipt_id, product_id, quantity, price) VALUES (:receipt_id, :product_id, :quantity, :price)';
 		return $this->database->fetchAll($query,  [
 			'receipt_id' => $receipt_id,
 			'product_id' => $product_id,
-			'quantity' => $quantity
+			'quantity' => $quantity,
+			'price' => $price
 		]);
 	}
 

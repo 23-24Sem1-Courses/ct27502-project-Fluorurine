@@ -33,106 +33,110 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$json = json_encode($data);
 				header('Content-Type: application/json');
 				echo $json;
+				exit;
+			}
+		}
+		if ($_GET['action'] === 'getcart') {
+			$productmodel = new ProductModel();
+			try {
+				$checkarray = [];
+
+				if (!empty($_SESSION['cart'])) {
+					$checkarray = $_SESSION['cart'];
+				}
+
+				$data = $productmodel->readFromArray($checkarray);
+				// attach quantity from session to mathching product reutrn from php pdo
+				if (sizeof($data) != 0) {
+					foreach ($data as $key => $value) {
+						$data[$key]["quantity"] = $_SESSION['cart'][$value["id"]];
+					}
+				}
+
+				// print_r($data);
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
+			} catch (Exception $e) {
+				$data = [];
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
+				exit;
 			}
 		}
 
-		$productmodel = new ProductModel();
-		try {
-			$checkarray = [];
 
-			if (!empty($_SESSION['cart'])) {
-				$checkarray = $_SESSION['cart'];
+
+		if ($_GET['action'] === 'changeCartQuantity') {
+			if (!empty($_SESSION['cart'] && array_key_exists($_GET['id'], $_SESSION['cart']))) {
+				$_SESSION['cart'][$_GET['id']] = $_GET['quantity'];
+			} else {
+				$data = ["error" => "Không thể sửa số lượng đơn hàng"];
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
 			}
-
-			$data = $productmodel->readFromArray($checkarray);
-			// attach quantity from session to mathching product reutrn from php pdo
-			if (sizeof($data) != 0) {
-				foreach ($data as $key => $value) {
-					$data[$key]["quantity"] = $_SESSION['cart'][$value["id"]];
+		}
+		if ($_GET['action'] == "addproduct") {
+			if (!empty($_SESSION['cart'])) {
+				// Nếu đã có trong mảng thì cộng thêm / thêm mới vào
+				if (array_key_exists($_GET['id'], $_SESSION['cart'])) {
+					$_SESSION['cart'][$_GET['id']] += 1;
+				} else {
+					$_SESSION['cart'][$_GET['id']] = 1;
 				}
 			}
-
-			// print_r($data);
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-		} catch (Exception $e) {
-			$data = [];
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-			exit;
 		}
-	}
 
-	if ($_GET['action'] === 'changeCartQuantity') {
-		if (!empty($_SESSION['cart'] && array_key_exists($_GET['id'], $_SESSION['cart']))) {
-			$_SESSION['cart'][$_GET['id']] = $_GET['quantity'];
-		} else {
-			$data = ["error" => "Không thể sửa số lượng đơn hàng"];
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-		}
-	}
-	if ($_GET['action'] == "addproduct") {
-		if (!empty($_SESSION['cart'])) {
-			// Nếu đã có trong mảng thì cộng thêm / thêm mới vào
-			if (array_key_exists($_GET['id'], $_SESSION['cart'])) {
-				$_SESSION['cart'][$_GET['id']] += 1;
+		if ($_GET['action'] == "subproduct") {
+			if (!empty($_SESSION['cart'] && array_key_exists($_GET['id'], $_SESSION['cart']))) {
+				if ($_SESSION['cart'][$_GET['id']] > 1) {
+					$_SESSION['cart'][$_GET['id']] -= 1;
+				}
 			} else {
-				$_SESSION['cart'][$_GET['id']] = 1;
+				$data = ["error" => "Không thể sửa số lượng đơn hàng"];
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
 			}
 		}
-	}
-
-	if ($_GET['action'] == "subproduct") {
-		if (!empty($_SESSION['cart'] && array_key_exists($_GET['id'], $_SESSION['cart']))) {
-			if ($_SESSION['cart'][$_GET['id']] > 1) {
-				$_SESSION['cart'][$_GET['id']] -= 1;
+		if ($_GET['action'] == "readReceiptByUser") {
+			//validate if username exist
+			$receiptmodel = new ReceiptModel();
+			if (empty($_SESSION['username'])) {
+				$data = [];
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
+				exit;
 			}
-		} else {
-			$data = ["error" => "Không thể sửa số lượng đơn hàng"];
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
+			try {
+				$data = $receiptmodel->readByUser($_SESSION['username']);
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
+			} catch (Exception $e) {
+				$data = [];
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
+				exit;
+			}
 		}
-	}
-	if ($_GET['action'] = "readReceiptByUser") {
-		//validate if username exist
-		$receiptmodel = new ReceiptModel();
-		if (empty($_SESSION['username'])) {
-			$data = [];
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-			exit;
-		}
-		try {
-			$data = $receiptmodel->readByUser($_SESSION['username']);
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-		} catch (Exception $e) {
-			$data = [];
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-			exit;
-		}
-	}
-	if ($_GET['action'] == 'readReceipt') {
-		try {
-			$data = $receiptmodel->readById($_GET['id']);
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-		} catch (Exception $e) {
-			$data = [];
-			$json = json_encode($data);
-			header('Content-Type: application/json');
-			echo $json;
-			exit;
+		if ($_GET['action'] == 'readReceipt') {
+			try {
+				$data = $receiptmodel->readById($_GET['id']);
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
+			} catch (Exception $e) {
+				$data = [];
+				$json = json_encode($data);
+				header('Content-Type: application/json');
+				echo $json;
+				exit;
+			}
 		}
 	}
 }
@@ -195,6 +199,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			} catch (Exception $e) {
 				echo '<script>alert("Lỗi truy xuất dữ liệu.");</script>';
 				echo '<script>window.location.href = "http://ct275.localhost/adminreceipt.php";</script>';
+				exit;
+			}
+		}
+		if ($_POST['action'] == 'checkout') {
+			//check if user in session exist if not location to home page
+			if (empty($_SESSION['username'])) {
+				echo '<script>alert("Bạn chưa đăng nhập.");</script>';
+				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
+				exit;
+			}
+			//check if cart is empty
+			if (empty($_SESSION['cart'])) {
+				echo '<script>alert("Không có sản phẩm nào trong giỏ hàng.");</script>';
+				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
+				exit;
+			}
+			try {
+				$receiptmodel->create($_SESSION['cart'], $_POST['address'], $_SESSION['username']);
+			} catch (Exception $e) {
+				echo '<script>alert("Lỗi thanh toán.");</script>';
+				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
 				exit;
 			}
 		}

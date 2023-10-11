@@ -18,6 +18,7 @@ try {
 		header("Location: http://ct275.localhost/");
 		exit;
 	}
+	// TODO: Cái này sửa lại vì trong Controller Create Receipt đã sửa có price rồi.
 	$pricesum = 0;
 	// for each item in the receipt item get the item id and put the in the array called price array and then use that array to get the price of the item from product model
 	$price = [];

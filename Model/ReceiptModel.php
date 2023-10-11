@@ -30,9 +30,15 @@ class ReceiptModel
 			'address' => $address,
 		]);
 		$receiptcount = $this->count()[0]["count"];
+		$price = [];
+
+		$pricearray = $this->getPrice($price);
+		var_dump($price);
+
 		foreach ($sessionarray as $key => $value) {
 			// Chỗ này hơi phức tạp có thể cỉa thiện thêm
-			$receipt_item_model->create($receiptcount, $key, $value);
+			// Lấy giá hiện tại lưu trong mỗi hóa đơn
+			$receipt_item_model->create($receiptcount, $key, $value, $pricearray["key"]);
 		}
 		return;
 	}
@@ -67,7 +73,13 @@ class ReceiptModel
 	public function getPrice($id)
 	{
 		$query = 'SELECT id, price FROM products WHERE id IN (' . implode(',', $id) . ')';
-		return $this->database->fetchAll($query,  []);
+		$result = $this->database->fetchAll($query,  []);
+		// return it as key value
+		$returnarray = [];
+		foreach ($result as $key => $value) {
+			$returnarray[$value["id"]] = $value;
+		}
+		return $returnarray;
 	}
 	//Mặc định limit là 20
 	public function readPage($page, $limit = 8)
