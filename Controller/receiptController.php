@@ -215,11 +215,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
 				exit;
 			}
+			//check if address is empty
+			if (empty($_POST['address'])) {
+				echo '<script>alert("Bạn chưa nhập địa chỉ.");</script>';
+				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
+				exit;
+			}
 			try {
 				$receiptmodel->create($_SESSION['cart'], $_POST['address'], $_SESSION['username']);
 			} catch (Exception $e) {
+				echo $e;
 				echo '<script>alert("Lỗi thanh toán.");</script>';
-				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
+
+				// echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
 				exit;
 			}
 		}

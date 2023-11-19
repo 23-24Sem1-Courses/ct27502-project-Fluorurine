@@ -40,7 +40,7 @@
 
 			<?php
 			// Lấy hai chử đầu từ user hoặc chuỗi mặc định để hạn chế lỗi
-			$avatarLabel = isset($_SESSION['username']) ? substr($_SESSION['username'], 0, 2) : substr("Truong", 0, 2);
+			$avatarLabel = isset($_SESSION['username']) ? substr($_SESSION['username'], 0, 2) : "";
 			echo $avatarLabel; ?>
 		</div>
 

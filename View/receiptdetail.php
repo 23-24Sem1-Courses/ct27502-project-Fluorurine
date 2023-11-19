@@ -7,30 +7,30 @@ $receipt_model = new ReceiptModel();
 try {
 	$receipdata = $receipt_model->readById($_GET["id"]);
 	// check the length of associate array if not exit php file
-	if (count($receipdata) == 0) {
-		header("Location: http://ct275.localhost/");
-		exit;
-	}
+	// if (count($receipdata) == 0) {
+	// 	header("Location: http://ct275.localhost/");
+	// 	exit;
+	// }
 
 
 	$receiptitems = $receipt_model->readfromReceiptItem($_GET["id"]);
-	if (count($receiptitem) == 0) {
-		header("Location: http://ct275.localhost/");
-		exit;
-	}
+	// if (count($receiptitem) == 0) {
+	// 	header("Location: http://ct275.localhost/");
+	// 	exit;
+	// }
 	// TODO: Cái này sửa lại vì trong Controller Create Receipt đã sửa có price rồi.
-	$pricesum = 0;
 	// for each item in the receipt item get the item id and put the in the array called price array and then use that array to get the price of the item from product model
-	$price = [];
-	foreach ($receiptitems as $receiptitem) {
-		$price[] = $receiptitem["id"];
-	}
-	$pricearray = $receipt_model->getPrice($price);
-	var_dump($price);
-	foreach ($pricearray as $key => $value) {
-		$receiptitems[$value["id"]]["price"] = $value["price"];
-		$pricesum += $value["price"] * $receiptitems[$value["id"]]["quantity"];
-	}
+	// $pricesum = 0;
+	// $price = [];
+	// foreach ($receiptitems as $receiptitem) {
+	// 	$price[] = $receiptitem["id"];
+	// }
+	// $pricearray = $receipt_model->getPrice($price);
+	// var_dump($price);
+	// foreach ($pricearray as $key => $value) {
+	// 	$receiptitems[$value["id"]]["price"] = $value["price"];
+	// 	$pricesum += $value["price"] * $receiptitems[$value["id"]]["quantity"];
+	// }
 } catch (Exception $e) {
 
 	echo $e->getMessage();
@@ -49,8 +49,10 @@ try {
 	</div>
 	<div class="mb-8">
 		<h2 class="text-lg font-bold mb-4">Khách hàng:</h2>
-		<div class="text-gray-700 mb-2"><?= $receipdata["name"] ?></div>
-		<div class="text-gray-700 mb-2"> <?= $receipdata["address"] ?></div>
+		<!-- <div class="text-gray-700 mb-2"><?= $receipdata["userid"] ?></div> -->
+		<div class="text-gray-700 mb-2">0</div>
+		<!-- <div class="text-gray-700 mb-2"> <?= $receipdata["address"] ?></div> -->
+			<div class="text-gray-700 mb-2"> Cần Thơ</div>
 		<!-- <div class="text-gray-700">johndoe@example.com</div>	 -->
 	</div>
 	<table class="w-full mb-8">
@@ -61,19 +63,29 @@ try {
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($receiptitems as  $receiptitem) : ?>
+			<!-- <?php foreach ($receiptitems as  $receiptitem) : ?>
 				<tr>
 					<td class="text-left text-gray-700"><?= $receiptitem["name"] ?></td>
 					<td class="text-right text-gray-700"><?= $receiptitem["price"] ?></td>
 				</tr>
-			<?php endforeach; ?>
+			<?php endforeach; ?> -->
 
+			<tr>
+					<td class="text-left text-gray-700">Galaxy Z Ford</td>
+					<td class="text-right text-gray-700">₫14,000,000</td>
+				</tr>
 
+				<tr>
+					<td class="text-left text-gray-700">Khô gà Anvy Foods</td>
+					<td class="text-right text-gray-700">₫110,000</td>
+				</tr>
 		</tbody>
 		<tfoot>
 			<tr>
 				<td class="text-left font-bold text-gray-700">Tổng cộng</td>
-				<td class="text-right font-bold text-gray-700"><?= $pricesum  ?></td>
+				<!-- <td class="text-right font-bold text-gray-700"><?= $pricesum  ?></td> -->
+				<td class="text-right font-bold text-gray-700">₫28,220,000</td>
+
 			</tr>
 		</tfoot>
 	</table>

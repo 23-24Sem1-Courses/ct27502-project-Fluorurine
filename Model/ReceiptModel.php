@@ -23,14 +23,22 @@ class ReceiptModel
 	//Validate rồi thêm vào 2 bảng dữ liệu
 	public function create($sessionarray, $address, $customerid)
 	{
-		$query = 'INSERT INTO ' . $this->table . '(customerid, address) VALUES (:customerid, :address)';
+		$query = 'INSERT INTO ' . $this->table . '(userid, address) VALUES (:customerid, :address)';
 		$receipt_item_model = new ReceiptItemModel();
 		$this->database->fetchAll($query,  [
 			'customerid' => $customerid,
 			'address' => $address,
 		]);
+		// print_r ($sessionarray);
+		// foreach ($sessionarray as $key => $value) {
+		// 	echo $key . "--";
+		// 	echo $value . "--";
+		// }
 		$receiptcount = $this->count()[0]["count"];
 		$price = [];
+		foreach ($sessionarray as $key => $value) {
+			$price[] = $key;
+		}
 
 		$pricearray = $this->getPrice($price);
 		var_dump($price);
@@ -38,13 +46,13 @@ class ReceiptModel
 		foreach ($sessionarray as $key => $value) {
 			// Chỗ này hơi phức tạp có thể cỉa thiện thêm
 			// Lấy giá hiện tại lưu trong mỗi hóa đơn
-			$receipt_item_model->create($receiptcount, $key, $value, $pricearray["key"]);
+			$receipt_item_model->create($receiptcount, $key, $value, $pricearray[$key]);
 		}
 		return;
 	}
 	public function readfromReceiptItem($id)
 	{
-		$query = 'SELECT * FROM receipt_items WHERE receiptid = :id';
+		$query = 'SELECT * FROM receipt_items WHERE receipt_id = :id';
 		return $this->database->fetchAll($query,  [
 			'id' => $id,
 		]);
@@ -52,7 +60,7 @@ class ReceiptModel
 	// Read all users
 	public function readByUser($id)
 	{
-		$query = 'SELECT * FROM ' . $this->table . " WHERE customerid  = :id";
+		$query = 'SELECT * FROM ' . $this->table . " WHERE userid  = :id";
 		return $this->database->fetchAll($query,  [
 			'id' => $id,
 		]);

@@ -9,12 +9,9 @@
 				<p class="text-gray-700">Không có sản phẩm nào trong giỏ hàng</p>
 			</div>
 			<!-- Add the address into a form and submit it-->
-			<form method="POST" id="checkout" action="http://ct275.localhost/Controller/receiptController.php">
-				<input type="hidden" name="action" value="checkout">
-				<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhập địa chỉ để nhận hàng</label>
-				<input required type="text" id="address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập địa chỉ để giao hàng" required>
-			</form>
+
 		</div>
+
 		<!-- Sub total -->
 		<div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
 			<div class="mb-2 flex justify-between">
@@ -33,6 +30,14 @@
 
 			<button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600" onclick="handlecheckout()">Thanh toán</button>
 		</div>
+
+	</div>
+	<div class="w-1/2 mx-auto">
+		<form method="POST" id="checkout" action="http://ct275.localhost/Controller/receiptController.php">
+					<input type="hidden" name="action" value="checkout">
+					<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhập địa chỉ để nhận hàng</label>
+					<input required type="text" id="address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập địa chỉ để giao hàng" required>
+				</form>
 	</div>
 	<script>
 		const cartsum = () => {
@@ -123,7 +128,7 @@
 		//
 		const refreshPage = () => {
 			$.ajax({
-				url: 'http://ct275.localhost/Controller/receiptController.php?action=getcartproducts',
+				url: 'http://ct275.localhost/Controller/receiptController.php?action=getcart',
 				type: 'GET',
 				success: function(response) {
 					console.log(response);
