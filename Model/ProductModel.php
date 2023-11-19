@@ -99,6 +99,12 @@ class ProductModel
 			'description' => $description
 		]);
 	}
+	// Fetch 8 latest product from database
+	public function fetchLatest()
+	{
+		$query = 'SELECT * FROM ' . $this->table . " ORDER BY id DESC LIMIT 8";
+		return $this->database->fetchAll($query,  []);
+	}
 
 	// Delete a user
 	public function delete($id)

@@ -5,7 +5,7 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
 	header("Location: /");
 	exit;
 } ?>
-<div class="h-screen bg-gray-200 py-20 p-4 lg:p-32">
+<div class="h-auto   bg-gray-200 py-20 p-4 lg:p-32">
 	<div class="max-w-md bg-white rounded-lg overflow-hidden shadow-lg mx-auto">
 		<div class="p-6 ">
 			<h2 class="text-2xl font-bold text-gray-800 mb-2">Chào mừng bạn đến với chúng tôi</h2>

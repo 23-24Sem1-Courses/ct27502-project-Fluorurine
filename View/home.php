@@ -4,7 +4,7 @@ use Model\ProductModel;
 
 $test = new ProductModel();
 // print_r(($test->readAll()));
-$productarray = $test->readAll();
+$productarray = $test->fetchLatest();
 // foreach ($test->readAll()[0] as $key => $value) {
 // 	echo $key;
 // 	echo "UWU";
@@ -147,7 +147,7 @@ $productarray = $test->readAll();
 				<div class="group relative">
 					<a href="http://ct275.localhost/productdetail?id=<?= $value['id'] ?>">
 						<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-							<img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+							<img src=<?= $value['file_path']?> alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
 						</div>
 						<div class="mt-4 flex justify-between">
 							<div>

@@ -43,5 +43,5 @@ VALUES
   ('Example 2', 'Description 2', 'Category 2', 19.99, '/path/to/file2'),
   ('Example 3', 'Description 3', 'Category 1', 14.99, '/path/to/file3'),
   ('Example 20', 'Description 20', 'Category 2', 12.99, '/path/to/file20');
-
+INSERT INTO products (name, description,category, price, file_path)
 CREATE INDEX product_index ON products (id);

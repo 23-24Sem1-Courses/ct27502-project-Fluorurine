@@ -1,5 +1,5 @@
-<div class="px-4 pt-16 mx-auto lg:px-8 border-t flex">
-	<div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+<div class="flex px-4 pt-16 mx-auto lg:px-8 border-t ">
+	<div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4 ">
 		<div class="sm:col-span-2">
 			<a href="/" aria-label="Go home" title="Company" class="inline-flex items-center">
 				<svg class="w-8 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
@@ -61,7 +61,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
+	<div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row 	">
 		<p class="text-sm text-gray-600">
 			© Copyright 2023 Võ Minh Trường. All rights reserved.
 		</p>
