@@ -34,10 +34,10 @@
 	</div>
 	<div class="w-1/2 mx-auto">
 		<form method="POST" id="checkout" action="http://ct275.localhost/Controller/receiptController.php">
-					<input type="hidden" name="action" value="checkout">
-					<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhập địa chỉ để nhận hàng</label>
-					<input required type="text" id="address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập địa chỉ để giao hàng" required>
-				</form>
+			<input type="hidden" name="action" value="checkout">
+			<label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhập địa chỉ để nhận hàng</label>
+			<input required type="text" id="address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Nhập địa chỉ để giao hàng" required>
+		</form>
 	</div>
 	<script>
 		const cartsum = () => {

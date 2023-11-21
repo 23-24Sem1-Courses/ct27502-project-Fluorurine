@@ -163,9 +163,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					exit;
 				}
 
-				$receiptmodel->create($_SESSION['cart'], $_POST['address'], $_SESSION['username']);
-				echo '<script>alert("Thêm thành công.");</script>';
-				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
+				echo "Here";
+
+
+				// $receiptmodel->create($_SESSION['cart'], $_POST['address'], $_SESSION['username']);
+
 				exit;
 			} catch (Exception $e) {
 				echo '<script>alert("Lỗi truy xuất dữ liệu.");</script>';
@@ -204,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		if ($_POST['action'] == 'checkout') {
 			//check if user in session exist if not location to home page
-			if (empty($_SESSION['username'])) {
+			if (empty($_SESSION['userid'])) {
 				echo '<script>alert("Bạn chưa đăng nhập.");</script>';
 				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
 				exit;
@@ -222,7 +224,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				exit;
 			}
 			try {
-				$receiptmodel->create($_SESSION['cart'], $_POST['address'], $_SESSION['username']);
+				$receiptmodel->create($_SESSION['cart'], $_POST['address'], $_SESSION['userid']);
+				echo '<script>alert("Thêm thành công.");</script>';
+				echo '<script>window.location.href = "http://ct275.localhost/cart.php";</script>';
 			} catch (Exception $e) {
 				echo $e;
 				echo '<script>alert("Lỗi thanh toán.");</script>';

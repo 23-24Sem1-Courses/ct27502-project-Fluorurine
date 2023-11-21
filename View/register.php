@@ -10,7 +10,7 @@ if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
 		<div class="p-6 ">
 			<h2 class="text-2xl font-bold text-gray-800 mb-2">Chào mừng bạn đến với chúng tôi</h2>
 			<p class="text-gray-700 mb-6">Điền các thông tin cơ bản để đăng ký</p>
-			<form class=" mb-4 bg-white rounded" id="registerForm" action="Controller/registerController.php" method="post">
+			<form class=" mb-4 bg-white rounded" id="registerForm" action="http://ct275.localhost/Controller/registerController.php" method="post">
 				<div class="mb-4 md:flex md:justify-between">
 					<div class="mb-4 md:mr-2 md:mb-0">
 						<label class="block mb-2 text-sm font-bold text-gray-700" for="firstName">

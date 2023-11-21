@@ -14,10 +14,30 @@
 		</div>
 
 		<ul class="flex items-center space-x-6 mr-5">
-			<a href="http://ct275.localhost/cart">
+			<?php
+			if (isset($_SESSION['username'])) {
+				echo '<a href="http://ct275.localhost/cart.php">
 				<li class="font-semibold text-gray-700 ">Giỏ hàng</li>
 			</a>
-			<li class="font-semibold text-gray-700">Đơn hàng</li>
+			<a href="http://ct275.localhost/receipt.php">
+				<li class="font-semibold text-gray-700">Đơn hàng</li>
+			</a>';
+			} else {
+				echo '<a href="http://ct275.localhost/login.php">
+				<li class="font-semibold text-gray-700 ">Đăng nhập</li>
+			</a>
+			<a href="http://ct275.localhost/register.php">
+				<li class="font-semibold text-gray-700">Đăng ký</li>
+			</a>';
+			}
+			?>
+
+			<!-- <a href="http://ct275.localhost/cart">
+				<li class="font-semibold text-gray-700 ">Giỏ hàng</li>
+			</a>
+			<a href="http://ct275.localhost/receipt">
+				<li class="font-semibold text-gray-700">Đơn hàng</li>
+			</a> -->
 			<!-- <li>
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -43,7 +63,11 @@
 			$avatarLabel = isset($_SESSION['username']) ? substr($_SESSION['username'], 0, 2) : "";
 			echo $avatarLabel; ?>
 		</div>
-
+		<?php if (isset($_SESSION['username'])) {
+			echo '<a href="http://ct275.localhost/logout.php">
+				<p class="font-semibold text-gray-700 ml-2">Đăng xuất</p>
+			</a>';
+		} ?>
 
 
 	</div>

@@ -1,9 +1,27 @@
 <?php
 
 use Model\ReceiptModel;
+// check if user login in session. If not redirect to login page in php
+if (empty($_SESSION['username'])) {
+	echo '<script>alert("Bạn chưa đăng nhập.");</script>';
+	echo '<script>window.location.href = "http://ct275.localhost/login.php";</script>';
+	exit;
+}
 
 $receipt_model = new ReceiptModel();
-$receiptarray = $receipt_model->readAll();
+if (empty($_SESSION['username'])) {
+	echo "<script>alert('Bạn chưa đăng nhập.');window.location.href='http://ct275.localhost/login.php';</script>";
+	exit;
+}
+$receiptarray;
+if ($_SESSION["username"] == "admin") {
+	$receiptarray = $receipt_model->readAll();
+} else {
+	$receiptarray = $receipt_model->readByUser($_SESSION['userid']);
+}
+
+// $receiptarray = $receipt_model->readByUser(0);
+
 // If no username and password are in session or POST data, do nothing
 ?>
 <div class=" bg-gray-200 py-20 p-4 md:p-20 lg:p-32 overflow-hidden">
@@ -42,7 +60,7 @@ $receiptarray = $receipt_model->readAll();
 
 									<td class="px-6 py-4 border">
 										<div class="flex w-32 font-bold justify-between">
-											<a href="http://ct275.localhost/receiptdetail.php?id=<?= $receipt["id"] ?>" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
+											<a href="http://ct275.localhost/receiptdetail.php?id=<?= $receipt["id"] ?>" class="font-medium text-blue-600 underline hover:font-bold">Xem chi tiết</a>
 
 										</div>
 									</td>
@@ -51,7 +69,7 @@ $receiptarray = $receipt_model->readAll();
 
 						</tbody>
 					</table>
-					<div id="tableplaceholder	" class="text-center text-gray-500 mt-4 mb-4"> Không có sản phẩm để hiển thị</div>
+					<?php if (empty($receiptarray)) echo `<div id="tableplaceholder	" class="text-center text-gray-500 mt-4 mb-4"> Không có sản phẩm để hiển thị</div>` ?>
 				</div>
 
 

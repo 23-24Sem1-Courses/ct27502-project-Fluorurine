@@ -123,7 +123,7 @@ class ProductModel
 	// Có thể xem xét để fetch id từ file config bên ngoài
 	public function getRecommend()
 	{
-		$ids = [1, 2, 7, 9];
+		$ids = [10, 12, 7, 9];
 		$idList = implode(',', $ids);
 
 		$query = 'SELECT * FROM ' . $this->table . " WHERE id IN ($idList)";

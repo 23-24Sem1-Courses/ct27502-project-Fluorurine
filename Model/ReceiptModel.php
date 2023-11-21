@@ -7,6 +7,7 @@ use Model\Database;
 
 use Model\ReceiptItemModel;
 
+
 class ReceiptModel
 {
 	private $database;
@@ -23,30 +24,27 @@ class ReceiptModel
 	//Validate rồi thêm vào 2 bảng dữ liệu
 	public function create($sessionarray, $address, $customerid)
 	{
+		//validate address with htmlspecialchar
+		$address = htmlspecialchars($address);
 		$query = 'INSERT INTO ' . $this->table . '(userid, address) VALUES (:customerid, :address)';
 		$receipt_item_model = new ReceiptItemModel();
 		$this->database->fetchAll($query,  [
 			'customerid' => $customerid,
 			'address' => $address,
 		]);
-		// print_r ($sessionarray);
-		// foreach ($sessionarray as $key => $value) {
-		// 	echo $key . "--";
-		// 	echo $value . "--";
-		// }
-		$receiptcount = $this->count()[0]["count"];
+
+		$receiptcount = $this->maxId()[0]["max"];
 		$price = [];
 		foreach ($sessionarray as $key => $value) {
 			$price[] = $key;
 		}
 
 		$pricearray = $this->getPrice($price);
-		var_dump($price);
 
 		foreach ($sessionarray as $key => $value) {
-			// Chỗ này hơi phức tạp có thể cỉa thiện thêm
-			// Lấy giá hiện tại lưu trong mỗi hóa đơn
-			$receipt_item_model->create($receiptcount, $key, $value, $pricearray[$key]);
+
+			$receipt_item_model->create($receiptcount, $key, $value, $pricearray[$key]["price"]);
+			$_SESSION['cart'] = array();
 		}
 		return;
 	}
@@ -88,6 +86,11 @@ class ReceiptModel
 			$returnarray[$value["id"]] = $value;
 		}
 		return $returnarray;
+	}
+	public function maxId()
+	{
+		$query = 'SELECT MAX(id) as max FROM ' . $this->table;
+		return $this->database->fetchAll($query,  []);
 	}
 	//Mặc định limit là 20
 	public function readPage($page, $limit = 8)

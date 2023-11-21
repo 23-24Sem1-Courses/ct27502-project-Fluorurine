@@ -1,5 +1,6 @@
 <?php
 // echo "Hello World";
+
 ?>
 <div class="bg-gray-800 font-sans leading-normal tracking-normal">
 
@@ -65,7 +66,7 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
 					</svg>
 
-					<a href="http://ct275.localhost/adminproduct">Trở lại</a>
+					<a href="http://ct275.localhost/adminproduct.php">Trở lại</a>
 				</button>
 
 				<div class="relative overflow-x-auto shadow-md sm:rounded-lg  p-8">

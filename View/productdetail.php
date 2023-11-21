@@ -29,7 +29,7 @@ if (count($productdata) == 0) {
 				<h2 class="text-sm title-font text-gray-500 tracking-widest">Tên sản phẩm</h2>
 				<h1 class="text-gray-900 text-3xl title-font font-medium mb-4"><?= $productdata[0]["name"] ?></h1>
 
-				<pre><p class="leading-relaxed "><?= $productdata[0]["description"] ?></p></pre>
+				<pre class="w-full "><p class="leading-relaxed overflow-x-auto "><?= $productdata[0]["description"] ?></p></pre>
 				<div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
 
 				</div>
@@ -44,7 +44,7 @@ if (count($productdata) == 0) {
 				</div>
 				<div class="flex justify-around  mt-12 ">
 					<button id="addCart" class="  text-white bg-blue-500 border-0 py-2 px-6 ml-24 focus:outline-none hover:bg-blue-900 rounded">Thêm vào giỏ hàng</button>
-					<button id="buyBtn" class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">Mua ngay</button>
+					<button id="buyBtn" class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded"><a href="http://ct275.localhost/cart.php">Mua ngay</a></button>
 				</div>
 			</div>
 		</div>

@@ -24,7 +24,7 @@ $test = new UserModel();
 						</form>
 					</li>
 					<li>
-						<a href=" http://ct275.localhost/adminuser" class="flex items-center font-bold p-2 text-base text-gray-900 rounded-lg border-b border-white-500 hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+						<a href=" http://ct275.localhost/adminuser.php" class="flex items-center font-bold p-2 text-base text-gray-900 rounded-lg border-b border-white-500 hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
 							<svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 								<path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
 								<path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -34,7 +34,7 @@ $test = new UserModel();
 					</li>
 
 					<li>
-						<a href="http://ct275.localhost/adminproduct" class="flex items-center p-2 font-bold text-base text-gray-900 rounded-lg hover:bg-gray-100 group border-b border-white-500 dark:text-gray-200 dark:hover:bg-gray-700 ">
+						<a href="http://ct275.localhost/adminproduct.php" class="flex items-center p-2 font-bold text-base text-gray-900 rounded-lg hover:bg-gray-100 group border-b border-white-500 dark:text-gray-200 dark:hover:bg-gray-700 ">
 							<svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 								<path clip-rule="evenodd" fill-rule="evenodd" d="M8.34 1.804A1 1 0 019.32 1h1.36a1 1 0 01.98.804l.295 1.473c.497.144.971.342 1.416.587l1.25-.834a1 1 0 011.262.125l.962.962a1 1 0 01.125 1.262l-.834 1.25c.245.445.443.919.587 1.416l1.473.294a1 1 0 01.804.98v1.361a1 1 0 01-.804.98l-1.473.295a6.95 6.95 0 01-.587 1.416l.834 1.25a1 1 0 01-.125 1.262l-.962.962a1 1 0 01-1.262.125l-1.25-.834a6.953 6.953 0 01-1.416.587l-.294 1.473a1 1 0 01-.98.804H9.32a1 1 0 01-.98-.804l-.295-1.473a6.957 6.957 0 01-1.416-.587l-1.25.834a1 1 0 01-1.262-.125l-.962-.962a1 1 0 01-.125-1.262l.834-1.25a6.957 6.957 0 01-.587-1.416l-1.473-.294A1 1 0 011 10.68V9.32a1 1 0 01.804-.98l1.473-.295c.144-.497.342-.971.587-1.416l-.834-1.25a1 1 0 01.125-1.262l.962-.962A1 1 0 015.38 3.03l1.25.834a6.957 6.957 0 011.416-.587l.294-1.473zM13 10a3 3 0 11-6 0 3 3 0 016 0z"></path>
 							</svg>
@@ -42,7 +42,7 @@ $test = new UserModel();
 						</a>
 
 					<li class="pt-2 space-y-2 border-b border-white-500 rounded font-bold">
-						<a href="http://ct275.localhost/adminreceipt" target="_blank" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+						<a href="http://ct275.localhost/receipt.php" target="_blank" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
 							<svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 								<path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
 								<path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
@@ -129,15 +129,18 @@ $test = new UserModel();
 <script>
 	let currentpage = 1;
 	let pagesize = 8;
-	let count = JSON.parse('<?= $test->lastId() ?>')[0].count;
+	console.log("here");
+	let count = JSON.parse('<?= $test->lastId() ?>')[0].id;
+	console.log(count);
+	console.log(count);
 	let refreshPage = (num) => {
 		// Phân tranhg here
-		let row = `	Đang hiển thị <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + 1}</span> đến <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + pagesize}</span> của <span class="font-semibold text-gray-900 ">${count}</span> sản phẩm`
+		let row = `	Đang hiển thị <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + 1}</span> đến <span class="font-semibold text-gray-900 ">${(num - 1) * pagesize + pagesize}</span> của <span class="font-semibold text-gray-900 ">${count}</span> người dùng`
 		$('#pagination').html(row);
 		// End of phân trang
 
 		$.ajax({
-			url: 'http://ct275.localhost/Controller/usertController.php?action=readPage&page=' + num,
+			url: 'http://ct275.localhost/Controller/userController.php?action=readPage&page=' + num,
 			type: 'GET',
 			success: function(response) {
 				$('#content').empty();
@@ -149,9 +152,9 @@ $test = new UserModel();
 					let row = `
 						<tr class="hover:bg-gray-100">
 								<td class="px-6 py-4 border w-2 ">${user.id}</td>
-								<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${user.name}</td>
-								<td class="px-6 py-4 border"><img src="${user.file_path}" alt="${user.name}" class="w-20 h-20"></td>
-								<td class="px-6 py-4 border">${product.email}</td>
+								<td class="px-6 py-4 border font-medium text-gray-900 whitespace-nowrap">${user.username}</td>
+								<td class="px-6 py-4 border">${user.lastname} ${user.firstname}></td>
+								<td class="px-6 py-4 border">${user.email}</td>
 								<td class="px-6 py-4 border">
 										<div class="flex w-32 font-bold justify-between">
 												<a href="http://ct275.localhost/userupdate.php?id=${user.id}" class="font-medium text-blue-600 hover:underline">Chỉnh sửa</a>
@@ -185,23 +188,20 @@ $test = new UserModel();
 			refreshPage(currentpage)
 		}
 	}
-	// Sử lý sự kieenjclick vào nút phân trang
 	let deleteItem = (id) => {
-
+		console.log(id);
 		$.ajax({
-			url: 'http://ct275.localhost/Controller/usertController.php?action=delete&id=' + id,
+			url: 'http://ct275.localhost/Controller/userController.php?action=delete&id=' + id,
 			type: 'GET',
 			success: function(response) {
 				refreshPage(currentpage)
 			},
 			error: function(xhr, status, error) {
-				// Handle errors
 				console.log("Error: " + error);
 			}
 		});
 		refreshPage(currentpage)
 	}
-	$(document).ready(function() {
-		refreshPage(currentpage)
-	})
+
+	refreshPage(currentpage)
 </script>

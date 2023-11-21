@@ -16,7 +16,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 		<div class="p-6">
 			<h2 class="text-2xl font-bold text-gray-800 mb-2">Chào mừng bạn đã trở lại</h2>
 			<p class="text-gray-700 mb-6">Hãy đăng nhập vào tài khoản của bạn</p>
-			<form id="loginForm" action="Controller/loginController.php" enctype="multipart/form-data " method="POST">
+			<form id="loginForm" action="http://ct275.localhost/Controller/loginController.php" enctype="multipart/form-data " method="POST">
 				<div class=" mb-4">
 					<label class="block text-gray-700 font-bold mb-2" for="username">
 						Tên đăng nhập
